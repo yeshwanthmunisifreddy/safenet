@@ -4,9 +4,14 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import com.thesubgraph.networking.data.serialization.common.ErrorMapper
+import com.thesubgraph.networking.data.serialization.common.NetworkError
 import com.thesubgraph.networking.data.serialization.common.WebServiceError
 import com.thesubgraph.networking.data.serialization.common.toDomain
+import retrofit2.HttpException
 import retrofit2.Response
+import java.io.IOException
+import java.net.UnknownHostException
+import java.util.concurrent.TimeoutException
 import javax.inject.Inject
 
 class RequestWrapper @Inject constructor(
@@ -40,9 +45,27 @@ class RequestWrapper @Inject constructor(
                 return ValueResult.Failure(error)
             }
         } catch (e: Exception) {
-            Log.e("ApiResponseException", "$e")
+            val error = when (e) {
+                is UnknownHostException ->/*  when {
+                    NetworkVariables.isNetworkConnected -> {
+                        NetworkError.ServerNotFound
+                    }
+                    else -> {
+                        NetworkError.NoInternet
+                    }
+                } */NetworkError.NoInternet
+                is IOException -> NetworkError.NoInternet
+                is TimeoutException -> NetworkError.RequestTimedOut
+                is HttpException -> when (e.code()) {
+                    401 -> WebServiceError.Authentication
+                    403 -> WebServiceError.Authorization
+                    500 -> WebServiceError.ServerError
+                    else -> WebServiceError.Unknown
+                }
+                else -> WebServiceError.Unknown
+            }
+            return ValueResult.Failure(error.toDomain(context))
         }
-
         return ValueResult.Failure(WebServiceError.Unknown.toDomain(context))
     }
 

@@ -88,7 +88,7 @@ data class ErrorMapper(
 
         return ErrorModel(
             type = error,
-            code = errorDto?.code ?: "",
+            code = code,
             message = errorDto?.message ?: error.getMessage(context),
             errors = errorDto?.errors?.map {
                 return@map ValidationError(it.key, it.value)

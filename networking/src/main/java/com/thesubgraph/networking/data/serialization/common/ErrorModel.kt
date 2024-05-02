@@ -28,7 +28,7 @@ enum class WebServiceError : ApplicationError {
 data class ErrorModel(
     val type: ApplicationError,
     val message: String,
-    val code: String = "",
+    val code: Int = 0,
     val errors: List<ValidationError> = listOf(),
 ) {
     val fullMessage: String get() {
