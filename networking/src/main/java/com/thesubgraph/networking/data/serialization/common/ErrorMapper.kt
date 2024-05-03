@@ -6,7 +6,7 @@ import com.thesubgraph.networking.data.common.ContextResponseDomainMapper
 import retrofit2.Response
 import java.net.UnknownHostException
 
-fun ApplicationError.getMessage(context: Context): String {
+fun ApplicationError.getMessage(): String {
     return when (this) {
         NetworkError.ServerNotResponding -> "Unable to reach server. Please try again later."
         NetworkError.ServerNotFound -> {
@@ -30,7 +30,7 @@ fun ApplicationError.getMessage(context: Context): String {
 }
 
 fun ApplicationError.toDomain(context: Context): ErrorModel {
-    return ErrorModel(this, this.getMessage(context))
+    return ErrorModel(this, this.getMessage())
 }
 
 fun String.toErrorDomain(): ErrorModel {
@@ -80,7 +80,7 @@ data class ErrorMapper(
                 val error = WebServiceError.Unknown
                 errorBody.close()
 
-                return ErrorModel(type = error, message = error.getMessage(context))
+                return ErrorModel(type = error, message = error.getMessage())
             }
         }
         val error = getError(code)
@@ -89,7 +89,7 @@ data class ErrorMapper(
         return ErrorModel(
             type = error,
             code = code,
-            message = errorDto?.message ?: error.getMessage(context),
+            message = errorDto?.message ?: error.getMessage(),
             errors = errorDto?.errors?.map {
                 return@map ValidationError(it.key, it.value)
             } ?: listOf()
