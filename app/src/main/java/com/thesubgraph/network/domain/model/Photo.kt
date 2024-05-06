@@ -1,4 +1,4 @@
-package com.thesubgraph.wallpaper.domain.model
+package com.thesubgraph.network.domain.model
 
 data class Photo(
     val id: String,

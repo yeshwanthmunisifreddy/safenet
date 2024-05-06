@@ -7,7 +7,7 @@ import com.thesubgraph.networking.AccessToken
 import com.thesubgraph.networking.SessionState
 import com.thesubgraph.networking.data.common.RequestWrapper
 import com.thesubgraph.networking.data.common.ValueResult
-import com.thesubgraph.wallpaper.domain.model.Photo
+import com.thesubgraph.network.domain.model.Photo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

@@ -32,12 +32,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.thesubgraph.network.ui.theme.Grey500
 import com.thesubgraph.network.ui.theme.TextStyle_Size18_Weight400
-import com.thesubgraph.wallpaper.domain.model.Photo
+import com.thesubgraph.network.domain.model.Photo
 import com.thesubgraph.network.view.common.Router
 import com.thesubgraph.network.view.common.ViewState
 import com.thesubgraph.network.view.common.components.DefaultAppBar

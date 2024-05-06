@@ -3,7 +3,7 @@ package com.thesubgraph.network.viewmodel.screens
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.thesubgraph.network.domain.usecase.PhotoUseCase
-import com.thesubgraph.wallpaper.domain.model.Photo
+import com.thesubgraph.network.domain.model.Photo
 import com.thesubgraph.network.view.common.PaginationState
 import com.thesubgraph.network.view.common.ViewState
 import com.thesubgraph.networking.data.common.ValueResult
