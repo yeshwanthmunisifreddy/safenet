@@ -33,8 +33,10 @@ import com.thesubgraph.network.ui.theme.TextStyle_Size18_Weight400
 @Composable
 fun ErrorContent(
     paddingValues: PaddingValues? = null,
+    errorMessage: String = "Something Went Wrong.",
     onRetryClick: () -> Unit,
-) {
+
+    ) {
     Column(
         modifier = Modifier
             .padding(paddingValues ?: PaddingValues())
@@ -43,7 +45,7 @@ fun ErrorContent(
         verticalArrangement = Arrangement.Center
     ) {
         ErrorImageView()
-        ErrorMessage(  onRetryClick)
+        ErrorMessage(errorMessage = errorMessage,onRetryClick = onRetryClick)
         Button(
             onClick = {
                 onRetryClick()
@@ -86,9 +88,9 @@ private fun ErrorImageView() {
 }
 
 @Composable
-private fun ErrorMessage(onRetryClick: () -> Unit) {
+private fun ErrorMessage(onRetryClick: () -> Unit, errorMessage: String) {
     Text(
-        text = "Something Went Wrong.",
+        text = errorMessage,
         style = TextStyle_Size18_Weight400.copy(lineHeight = 24.sp),
         color = Grey500,
         textAlign = TextAlign.Center,

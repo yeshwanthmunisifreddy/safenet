@@ -1,8 +1,8 @@
 package com.thesubgraph.networking.data.common
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
+import com.thesubgraph.networking.NetworkVariables
 import com.thesubgraph.networking.data.serialization.common.ErrorMapper
 import com.thesubgraph.networking.data.serialization.common.NetworkError
 import com.thesubgraph.networking.data.serialization.common.WebServiceError
@@ -46,14 +46,14 @@ class RequestWrapper @Inject constructor(
             }
         } catch (e: Exception) {
             val error = when (e) {
-                is UnknownHostException ->/*  when {
+                is UnknownHostException ->  when {
                     NetworkVariables.isNetworkConnected -> {
                         NetworkError.ServerNotFound
                     }
                     else -> {
                         NetworkError.NoInternet
                     }
-                } */NetworkError.NoInternet
+                }
                 is IOException -> NetworkError.NoInternet
                 is TimeoutException -> NetworkError.RequestTimedOut
                 is HttpException -> when (e.code()) {

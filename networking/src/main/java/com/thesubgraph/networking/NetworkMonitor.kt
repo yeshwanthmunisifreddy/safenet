@@ -1,10 +1,9 @@
-package com.thesubgraph.network
+package com.thesubgraph.networking
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
-import android.net.NetworkInfo
 import android.net.NetworkRequest
 import androidx.annotation.RequiresPermission
 import kotlin.properties.Delegates

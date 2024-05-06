@@ -8,7 +8,7 @@ import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeSpec
-import com.thesubgraph.annotations.UseModule
+import com.thesubgraph.annotations.UseCaseModule
 import dagger.Module
 import dagger.Provides
 import java.io.IOException
@@ -30,11 +30,11 @@ import javax.tools.Diagnostic
 @AutoService(Processor::class)
 class UseProviderProcessor : AbstractProcessor() {
     override fun getSupportedAnnotationTypes(): Set<String> {
-        return setOf(UseModule::class.java.canonicalName)
+        return setOf(UseCaseModule::class.java.canonicalName)
     }
 
     override fun process(annotations: Set<TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        roundEnv.getElementsAnnotatedWith(UseModule::class.java).filterIsInstance<TypeElement>()
+        roundEnv.getElementsAnnotatedWith(UseCaseModule::class.java).filterIsInstance<TypeElement>()
             .forEach { element ->
                 if (element.kind != ElementKind.CLASS) {
                     processingEnv.messager.printMessage(

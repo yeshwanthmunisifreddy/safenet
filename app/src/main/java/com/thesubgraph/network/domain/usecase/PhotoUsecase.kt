@@ -1,12 +1,12 @@
 package com.thesubgraph.network.domain.usecase
 
-import com.thesubgraph.annotations.UseModule
+import com.thesubgraph.annotations.UseCaseModule
 import com.thesubgraph.network.domain.repository.PhotoRepository
 import com.thesubgraph.networking.data.common.ValueResult
 import com.thesubgraph.wallpaper.domain.model.Photo
 import kotlinx.coroutines.flow.Flow
 
-@UseModule
+@UseCaseModule
 class PhotoUseCase(
     private val repository: PhotoRepository,
 ) {

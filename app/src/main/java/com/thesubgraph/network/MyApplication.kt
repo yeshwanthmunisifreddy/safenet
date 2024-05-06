@@ -1,6 +1,7 @@
 package com.thesubgraph.network
 
 import android.app.Application
+import com.thesubgraph.networking.NetworkMonitor
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

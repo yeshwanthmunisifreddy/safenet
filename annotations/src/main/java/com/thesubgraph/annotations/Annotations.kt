@@ -7,6 +7,7 @@ import kotlin.reflect.KClass
 annotation class RepositoryModule(
     val type: KClass<*>,
 )
+
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
 annotation class BaseUrl(val value: String)
@@ -17,7 +18,7 @@ annotation class ServiceModule()
 
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class UseModule
+annotation class UseCaseModule
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

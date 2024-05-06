@@ -108,7 +108,7 @@ private fun LoadingAndError(
     paddingValues: PaddingValues,
     onFetchMore: (refresh: Boolean) -> Unit
 ) {
-    when (viewState.value) {
+    when (val state = viewState.value) {
         ViewState.Loading -> {
             if (photos.value.isEmpty()) {
                 FullPageCircularLoader()
@@ -119,6 +119,7 @@ private fun LoadingAndError(
             if (photos.value.isEmpty()) {
                 ErrorContent(
                     paddingValues = paddingValues,
+                    errorMessage = state.error.message,
                     onRetryClick = {
                         onFetchMore(true)
                     })
