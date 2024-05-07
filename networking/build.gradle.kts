@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hiltAndroid)
     kotlin("kapt")
-
+    id("maven-publish")
 }
 
 android {
@@ -53,4 +53,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+publishing {
+    publications {
+        create<MavenPublication>("networking") {
+            groupId = "com.thesubgraph"
+            artifactId = "networking"
+            version = "1.0.0"
+        }
+        register<MavenPublication>("release"){
+            afterEvaluate{
+                from(components["release"])
+            }
+        }
+    }
 }

@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
     kotlin("kapt")
+    id("maven-publish")
 }
 
 java {
@@ -25,4 +26,17 @@ dependencies {
         because("Helper library and annotation processor for building incremental annotation processors")
     }
     kapt(libs.incap.processor)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("annotations") {
+                groupId = "com.thesubgraph"
+                artifactId = "annotations"
+                version = "1.0.0"
+                from(components["java"])
+            }
+        }
+    }
 }
