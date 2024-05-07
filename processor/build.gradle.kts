@@ -27,16 +27,13 @@ dependencies {
     }
     kapt(libs.incap.processor)
 }
-
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("annotations") {
-                groupId = "com.thesubgraph"
-                artifactId = "annotations"
-                version = "1.0.0"
-                from(components["java"])
-            }
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.thesubgraph"
+            artifactId = "processor"
+            version = "1.0.0"
+            from(components["java"])
         }
     }
 }

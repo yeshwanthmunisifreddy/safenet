@@ -12,9 +12,11 @@ android {
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        aarMetadata {
+            minCompileSdk = 24
+        }
     }
 
     buildTypes {
@@ -56,13 +58,11 @@ dependencies {
 }
 publishing {
     publications {
-        create<MavenPublication>("networking") {
+        register<MavenPublication>("release") {
             groupId = "com.thesubgraph"
             artifactId = "networking"
             version = "1.0.0"
-        }
-        register<MavenPublication>("release"){
-            afterEvaluate{
+            afterEvaluate {
                 from(components["release"])
             }
         }
