@@ -55,7 +55,10 @@ interface MyRepository {
 
 // Annotate your Repository
 @RepositoryModule(MyRepository::class)
-class MyRepositoryImpl(private val apiService: MyApiService) : MyRepository {
+class MyRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+    private val requestWrapper: RequestWrapper,
+) : MyRepository {
 override fun getPhotos(page: Int, pageSize: Int): Flow<ValueResult<List<Photo>>> {
         return flow {
             val result = requestWrapper.execute(mapper = { photos ->
