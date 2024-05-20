@@ -1,30 +1,32 @@
 [versions]
 agp = "8.3.2"
 coilCompose = "2.6.0"
-kotlin = "1.9.0"
-coreKtx = "1.13.0"
+kotlin = "1.9.20"
+coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
-material = "1.11.0"
+material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
-hilt = "2.50"
+hilt = "2.51.1"
 javapoet = "1.13.0"
 auto-service = "1.1.1"
 incap = "1.0.0"
 jetbrainsKotlinJvm = "1.9.0"
 gson = "2.10.1"
-retrofit2 = "2.9.0"
-converterGson = "2.9.0"
+retrofit2 = "2.11.0"
+converterGson = "2.11.0"
 loggingInterceptor = "4.10.0"
 kotlinKapt = "1.9.0"
-activityCompose = "1.8.2"
-composeBom = "2024.04.00"
-lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
+lifecycleRuntimeKtx = "2.8.0"
 navigation = "2.7.7"
-navigationCompose = "1.0.0"
+navigationCompose = "1.2.0"
+jreleaser = "1.12.0"
+safenet= "0.0.3"
 
 
 
@@ -67,6 +69,9 @@ androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lif
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+safenet-processor = { group = "com.thesubgraph.safenet", name = "processor", version.ref = "safenet" }
+safenet-annotations = { group = "com.thesubgraph.safenet", name = "annotations", version.ref = "safenet" }
+safenet-network = { group = "com.thesubgraph.safenet", name = "safenet", version.ref = "safenet" }
 
 
 [plugins]
@@ -75,7 +80,11 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-maven-publish = { id = "maven-publish", version = "0.14.2" }
+jreleaser = { id = "org.jreleaser", version.ref = "jreleaser" }
+
+
+
+
 
 
 

@@ -3,10 +3,10 @@ package com.thesubgraph.network.data.repository
 import com.thesubgraph.annotations.RepositoryModule
 import com.thesubgraph.network.data.remote.ApiService
 import com.thesubgraph.network.domain.repository.PhotoRepository
-import com.thesubgraph.networking.AccessToken
-import com.thesubgraph.networking.SessionState
-import com.thesubgraph.networking.data.common.RequestWrapper
-import com.thesubgraph.networking.data.common.ValueResult
+import com.thesubgraph.safenet.AccessToken
+import com.thesubgraph.safenet.SessionState
+import com.thesubgraph.safenet.data.common.RequestWrapper
+import com.thesubgraph.safenet.data.common.ValueResult
 import com.thesubgraph.network.domain.model.Photo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

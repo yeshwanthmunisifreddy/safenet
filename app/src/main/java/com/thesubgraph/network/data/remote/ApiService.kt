@@ -2,10 +2,9 @@ package com.thesubgraph.network.data.remote
 
 import com.thesubgraph.annotations.Authenticated
 import com.thesubgraph.annotations.BaseUrl
-import com.thesubgraph.annotations.CustomHeaders
 import com.thesubgraph.annotations.ServiceModule
 import com.thesubgraph.network.data.serialization.PhotoDto
-import com.thesubgraph.networking.data.common.WebServiceInterface
+import com.thesubgraph.safenet.data.common.WebServiceInterface
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

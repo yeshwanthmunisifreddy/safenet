@@ -109,7 +109,7 @@ class ServiceProviderProcessor : AbstractProcessor() {
             "gsonConverterFactory"
         )
         .addStatement(
-            "return com.thesubgraph.networking.di.RetrofitModule.INSTANCE.provideRetrofit(okHttpClient, gsonConverterFactory,\$S, \$T.class)",
+            "return com.thesubgraph.safenet.di.RetrofitModule.INSTANCE.provideRetrofit(okHttpClient, gsonConverterFactory,\$S, \$T.class)",
             baseUrl,
             ClassName.bestGuess(
                 element.asType().toString()

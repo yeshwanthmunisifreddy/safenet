@@ -1,7 +1,7 @@
 package com.thesubgraph.network.data.serialization
 
 import com.google.gson.annotations.SerializedName
-import com.thesubgraph.networking.data.common.ResponseDomainMapper
+import com.thesubgraph.safenet.data.common.ResponseDomainMapper
 import com.thesubgraph.network.domain.model.Photo
 
 data class PhotoDto(

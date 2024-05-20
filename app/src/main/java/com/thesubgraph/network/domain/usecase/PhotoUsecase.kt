@@ -2,7 +2,7 @@ package com.thesubgraph.network.domain.usecase
 
 import com.thesubgraph.annotations.UseCaseModule
 import com.thesubgraph.network.domain.repository.PhotoRepository
-import com.thesubgraph.networking.data.common.ValueResult
+import com.thesubgraph.safenet.data.common.ValueResult
 import com.thesubgraph.network.domain.model.Photo
 import kotlinx.coroutines.flow.Flow
 

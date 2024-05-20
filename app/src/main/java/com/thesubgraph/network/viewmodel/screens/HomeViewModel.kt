@@ -6,7 +6,7 @@ import com.thesubgraph.network.domain.usecase.PhotoUseCase
 import com.thesubgraph.network.domain.model.Photo
 import com.thesubgraph.network.view.common.PaginationState
 import com.thesubgraph.network.view.common.ViewState
-import com.thesubgraph.networking.data.common.ValueResult
+import com.thesubgraph.safenet.data.common.ValueResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*

@@ -1,6 +1,6 @@
 package com.thesubgraph.network.view.common
 
-import com.thesubgraph.networking.data.serialization.common.ErrorModel
+import com.thesubgraph.safenet.data.serialization.common.ErrorModel
 
 sealed class ViewState<out T> {
     data object Initial : ViewState<Nothing>()

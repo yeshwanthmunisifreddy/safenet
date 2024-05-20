@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hiltAndroid)
     kotlin("kapt")
+    `maven-publish`
 }
 
 android {
@@ -49,7 +50,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.5"
     }
     packaging {
         resources {
@@ -69,9 +70,9 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    implementation(project(":networking"))
-    implementation(project(":annotations"))
-    kapt(project(":processor"))
+    implementation(project(":safenet"))
+    implementation(libs.safenet.annotations)
+    kapt(libs.safenet.processor)
     implementation(libs.bundles.retrofit.network)
     implementation(libs.coil.compose)
     testImplementation(libs.junit)

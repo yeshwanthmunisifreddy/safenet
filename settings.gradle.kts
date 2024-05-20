@@ -23,4 +23,4 @@ rootProject.name = "network"
 include(":app")
 include(":annotations")
 include(":processor")
-include(":networking")
+include(":safenet")

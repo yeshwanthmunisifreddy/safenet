@@ -1,31 +1,51 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     id("java-library")
-    id("maven-publish")
     alias(libs.plugins.jetbrains.kotlin.jvm)
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
-publishing {
-   /*  publications{
-        register<MavenPublication>("release") {
-            groupId = "com.thesubgraph"
-            artifactId = "annotations"
-            version = "1.0.0"
-            afterEvaluate {
-                from(components["release"])
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+
+mavenPublishing{
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+
+    coordinates("com.thesubgraph.safenet", "annotations", "0.0.3")
+    pom {
+        name.set("annotations")
+        description.set("Annotations for generating Dagger modules")
+        inceptionYear.set("2024")
+        url.set("https://github.com/yeshwanthmunisifreddy/SafeNet")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
         }
-    } */
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.thesubgraph"
-            artifactId = "annotations"
-            version = "1.0.0"
-
-            from(components["java"])
+        developers {
+            developer {
+                id.set("yeshwanthmunisifreddy")
+                name.set("Yeshwanth Munisifreddy")
+                email.set("yeshwanth@thesubgraph.com")
+            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/yeshwanthmunisifreddy/SafeNet.git")
+            developerConnection.set("scm:git:ssh://github.com:yeshwanthmunisifreddy/SafeNet.git")
+            url.set("https://github.com/yeshwanthmunisifreddy/SafeNet")
         }
     }
 
