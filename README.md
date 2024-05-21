@@ -17,9 +17,9 @@ and the ```@BaseUrl``` annotation is used to specify the base URL for the API se
 ```
 dependencies {
 
-    implementation("com.thesubgraph:safenet:$latest-version")
-    implementation("com.thesubgraph:annotations:$latest-version")
-    kapt("com.thesubgraph.processor:$latest-version")
+    implementation("com.thesubgraph.safenet:safenet:$latest-version")
+    implementation("com.thesubgraph.safenet:annotations:$latest-version")
+    kapt("com.thesubgraph.safenet:processor:$latest-version")
 
   //other Dependency
 }
