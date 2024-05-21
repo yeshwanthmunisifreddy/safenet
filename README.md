@@ -29,6 +29,7 @@ Replace ```latest-version ``` with the latest version of the library.
 
 ## Here's a basic example of how you might use these annotations in your project:
 
+
 ```
 
 // Annotate your ApiService
@@ -107,9 +108,48 @@ object Modules
 ```includes = [RetrofitModule::class, AppModule::class, DispatcherModule::class]:```
 This parameter in the ```@Module``` annotation tells Dagger that the Modules object includes the ```RetrofitModule```, ```AppModule```, and ```DispatcherModule```. This means that the dependencies provided by these modules are also available for injection wherever the Modules object is used.
 
+## SessionState
+
+The snippet below demonstrates how to store the access token in the SessionState object. This access token will be utilized in the header of API requests when we use the ```@Authenticated``` annotation.
+
+```
+@RepositoryModule(type = LoginRepository::class)
+class LoginRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+    private val requestWrapper: RequestWrapper,
+    private val sessionState: SessionState,
+) : LoginRepository {
+    override fun login(userName: String, password: Int): Flow<ValueResult<User>> {
+        return flow {
+            val result = requestWrapper.execute {
+                apiService.login(userName,password)
+            }
+            sessionState.accessToken = result.data.accessToken
+            emit(result)
+        }
+    }
+
+  override fun signUp(email: String, password: Int): Flow<ValueResult<List<Photo>>> {
+        return flow {
+            sessionState.accessToken = AccessToken("Client-ID", token = "uxQ_VELbYVLsW95L9HsRfHYvScJ2pS0bjRH4FuW-5yo")
+            val result = requestWrapper.execute {
+                apiService.signUp(email,password)
+            }
+            sessionState.accessToken = result.data.accessToken
+            emit(result)
+        }
+    }
+
+}
+
+```
+By leveraging the SessionState to manage the access token, we ensure that our API requests are authenticated properly when the ```@Authenticated``` annotation is applied.
+
+
+
 In this example, the MyApiService is annotated with ```@ServiceModule```, which means it will be provided as a dependency where needed. 
 The MyRepositoryImpl is annotated with ```@RepositoryModule(MyRepository::class)```, indicating that it requires an instance of MyApiService to be injected. 
 The FetchDataUseCase is annotated with ```@UseCaseModule```, indicating that it should be provided as a dependency where needed. 
 
-
+ 
 
