@@ -2,7 +2,7 @@
 
 
 SafeNet is a library engineered to streamline the configuration of the network layer and dependency injection in your projects.
-It leverages annotations to automatically furnish essential components such as repositories, API services, and use cases. 
+It leverages annotations to automatically furnish essential components such as Repositories, API services, and UseCases. 
 This eliminates the need for manual setup using @Module and @Provides annotations, thereby simplifying the process of establishing the Network Layer and Dependency Injection for network layer.
 
 
