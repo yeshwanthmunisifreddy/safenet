@@ -24,7 +24,8 @@ dependencies {
   //other Dependency
 }
 ```
-Replace ```latest-version ``` with the latest version of the library.
+Replace ```latest-version ``` with the latest version of the library. You can find the latest version [here.](https://github.com/yeshwanthmunisifreddy/safenet/releases)
+
 
 
 ## Here's a basic example of how you might use these annotations in your project:
