@@ -34,6 +34,7 @@ Replace ```latest-version ``` with the latest version of the library.
 // Annotate your ApiService
 @ServiceModule
 @BaseUrl("BASE_URL")
+//@CustomHeaders(key values) if you want to custom headers add for all routes in this microservices
 interface MyApiService : WebServiceInterface {
     @GET("photos")
     @Authenticated
@@ -42,6 +43,20 @@ interface MyApiService : WebServiceInterface {
         @Query("page") page: Int,
         @Query("per_page") perSize: Int,
     ): Response<List<PhotoDto>>
+
+}
+
+
+@ServiceModule
+@BaseUrl("ANOTHER_BASE_URL")
+//@CustomHeaders(key values) if you want to custom headers add for all routes in this microservices
+interface MyAnotherService : WebServiceInterface {
+    @GET("endpoint")
+    @Authenticated
+    suspend fun getData(
+        @Query("page") page: Int,
+        @Query("per_page") perSize: Int,
+    ): Response<ResponseBody>
 
 }
 
@@ -56,7 +71,7 @@ interface MyRepository {
 // Annotate your Repository
 @RepositoryModule(MyRepository::class)
 class MyRepositoryImpl @Inject constructor(
-    private val apiService: ApiService,
+    private val apiService: ApiService, 
     private val requestWrapper: RequestWrapper,
 ) : MyRepository {
 override fun getPhotos(page: Int, pageSize: Int): Flow<ValueResult<List<Photo>>> {
@@ -80,6 +95,17 @@ class FetchDataUseCase(private val repository: MyRepository) {
 }
 
 ```
+
+## DI Module
+
+```
+@Module(includes = [RetrofitModule::class, AppModule::class,DispatcherModule::class])
+@InstallIn(SingletonComponent::class)
+object Modules
+
+```
+```includes = [RetrofitModule::class, AppModule::class, DispatcherModule::class]:```
+This parameter in the ```@Module``` annotation tells Dagger that the Modules object includes the ```RetrofitModule```, ```AppModule```, and ```DispatcherModule```. This means that the dependencies provided by these modules are also available for injection wherever the Modules object is used.
 
 In this example, the MyApiService is annotated with ```@ServiceModule```, which means it will be provided as a dependency where needed. 
 The MyRepositoryImpl is annotated with ```@RepositoryModule(MyRepository::class)```, indicating that it requires an instance of MyApiService to be injected. 
