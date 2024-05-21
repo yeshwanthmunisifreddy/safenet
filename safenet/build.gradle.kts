@@ -64,7 +64,7 @@ dependencies {
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
-    coordinates("com.thesubgraph.safenet", "safenet", "0.0.10")
+    coordinates("com.thesubgraph.safenet", "safenet", "0.1.0")
     pom {
         name.set("safenet")
         description.set(

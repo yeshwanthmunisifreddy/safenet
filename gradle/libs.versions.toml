@@ -26,8 +26,7 @@ lifecycleRuntimeKtx = "2.8.0"
 navigation = "2.7.7"
 navigationCompose = "1.2.0"
 jreleaser = "1.12.0"
-safenet= "0.0.4"
-safenetNetwork = "0.0.10"
+safenet = "0.1.0"
 vanniktech = "0.28.0"
 
 
@@ -73,7 +72,7 @@ androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragme
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 safenet-processor = { group = "com.thesubgraph.safenet", name = "processor", version.ref = "safenet" }
 safenet-annotations = { group = "com.thesubgraph.safenet", name = "annotations", version.ref = "safenet" }
-safenet-network = { group = "com.thesubgraph.safenet", name = "safenet", version.ref = "safenetNetwork" }
+safenet-network = { group = "com.thesubgraph.safenet", name = "safenet", version.ref = "safenet" }
 
 
 [plugins]

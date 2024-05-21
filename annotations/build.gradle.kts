@@ -22,7 +22,7 @@ mavenPublishing{
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("com.thesubgraph.safenet", "annotations", "0.0.4")
+    coordinates("com.thesubgraph.safenet", "annotations", "0.1.0")
     pom {
         name.set("annotations")
         description.set("Annotations for generating Dagger modules")

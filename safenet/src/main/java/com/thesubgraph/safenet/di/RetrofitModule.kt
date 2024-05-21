@@ -93,14 +93,26 @@ object RetrofitModule {
             val invocation = request.tag(Invocation::class.java)
             val method = invocation?.method()
             val serviceClass = invocation?.method()?.declaringClass
-
             val customHeaders = method?.getAnnotation(CustomHeaders::class.java)
-                ?: serviceClass?.getAnnotation(CustomHeaders::class.java)
+            val classCustomHeaders = serviceClass?.getAnnotation(CustomHeaders::class.java)
             request = customHeaders?.let { headers ->
                 val newRequest = request.newBuilder()
                 headers.headers.forEach { header ->
                     val parts = header.split(":")
-                    if (parts.size == 2) {
+                    if (parts.size == 2 && parts.getOrNull(1)?.isEmpty() == false &&
+                        parts.getOrNull(0)?.isEmpty() == false) {
+                        newRequest.addHeader(parts[0].trim(), parts[1].trim())
+                    }
+                }
+                newRequest.build()
+            } ?: request
+
+            request = classCustomHeaders?.let { headers ->
+                val newRequest = request.newBuilder()
+                headers.headers.forEach { header ->
+                    val parts = header.split(":")
+                    if (parts.size == 2 && parts.getOrNull(1)?.isEmpty() == false &&
+                        parts.getOrNull(0)?.isEmpty() == false) {
                         newRequest.addHeader(parts[0].trim(), parts[1].trim())
                     }
                 }

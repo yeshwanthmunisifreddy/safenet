@@ -38,7 +38,7 @@ mavenPublishing{
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("com.thesubgraph.safenet", "processor", "0.0.4")
+    coordinates("com.thesubgraph.safenet", "processor", "0.1.0")
     pom {
         name.set("processor")
         description.set("A processor for generating Dagger modules from annotated interfaces and classes")
