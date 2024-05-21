@@ -4,7 +4,7 @@ plugins {
     `java-library`
     kotlin("kapt")
     alias(libs.plugins.jetbrains.kotlin.jvm)
-    id("com.vanniktech.maven.publish") version "0.28.0"
+    alias(libs.plugins.vanniktech.maven.publish)
 
 }
 
@@ -38,7 +38,7 @@ mavenPublishing{
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("com.thesubgraph.safenet", "processor", "0.0.3")
+    coordinates("com.thesubgraph.safenet", "processor", "0.0.4")
     pom {
         name.set("processor")
         description.set("A processor for generating Dagger modules from annotated interfaces and classes")

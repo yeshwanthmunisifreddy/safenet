@@ -90,17 +90,22 @@ object RetrofitModule {
     fun provideCustomHeaderInterceptor(): Interceptor {
         return Interceptor { chain ->
             var request = chain.request()
-            request = request.tag(Invocation::class.java)?.method()
-                ?.getAnnotation(CustomHeaders::class.java)?.let { customHeaders ->
-                    val newRequest = request.newBuilder()
-                    customHeaders.headers.forEach { header ->
-                        val parts = header.split(":")
-                        if (parts.size == 2) {
-                            newRequest.addHeader(parts[0].trim(), parts[1].trim())
-                        }
+            val invocation = request.tag(Invocation::class.java)
+            val method = invocation?.method()
+            val serviceClass = invocation?.method()?.declaringClass
+
+            val customHeaders = method?.getAnnotation(CustomHeaders::class.java)
+                ?: serviceClass?.getAnnotation(CustomHeaders::class.java)
+            request = customHeaders?.let { headers ->
+                val newRequest = request.newBuilder()
+                headers.headers.forEach { header ->
+                    val parts = header.split(":")
+                    if (parts.size == 2) {
+                        newRequest.addHeader(parts[0].trim(), parts[1].trim())
                     }
-                    newRequest.build()
-                } ?: request
+                }
+                newRequest.build()
+            } ?: request
             chain.proceed(request)
         }
     }

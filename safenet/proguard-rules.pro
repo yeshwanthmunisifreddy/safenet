@@ -19,10 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep class com.thesubgraph.safenet.** { *; }
-
--keep class com.thesubgraph.safenet.data.serialization.common.** { *; }
+-keep class com.thesubgraph.safenet.NetworkMonitor{ *; }
+-keep class com.thesubgraph.safenet.AccessToken{ *; }
+-keep class com.thesubgraph.safenet.SessionState{ *; }
+-keep class com.thesubgraph.safenet.data.common.** { *; }
+-keep class com.thesubgraph.safenet.data.serialization.** { *; }
 -keep class com.thesubgraph.safenet.SessionState.** { *; }
+
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.
 -keepattributes Signature, InnerClasses, EnclosingMethod
@@ -71,3 +74,9 @@
 
 # With R8 full mode generic signatures are stripped for classes that are not kept.
 -keep,allowobfuscation,allowshrinking class retrofit2.Response
+
+-keep, allowobfuscation class com.thesubgraph.safenet.di.** { *; }
+
+-keepclasseswithmembers,includedescriptorclasses class * {
+   @dagger.* <fields>;
+}

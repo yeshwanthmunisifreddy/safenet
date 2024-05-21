@@ -31,7 +31,7 @@ android {
             )
         }
         debug {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    implementation(project(":safenet"))
+    implementation(libs.safenet.network)
     implementation(libs.safenet.annotations)
     kapt(libs.safenet.processor)
     implementation(libs.bundles.retrofit.network)

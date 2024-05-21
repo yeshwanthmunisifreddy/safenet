@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hiltAndroid)
     kotlin("kapt")
-    id("com.vanniktech.maven.publish") version "0.28.0"
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
 android {
@@ -19,18 +19,17 @@ android {
         aarMetadata {
             minCompileSdk = 24
         }
+
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
         debug {
-            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,6 +42,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    kapt{
+        correctErrorTypes = true
     }
 }
 
@@ -62,7 +64,7 @@ dependencies {
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
-    coordinates("com.thesubgraph.safenet", "safenet", "0.0.5")
+    coordinates("com.thesubgraph.safenet", "safenet", "0.0.10")
     pom {
         name.set("safenet")
         description.set(

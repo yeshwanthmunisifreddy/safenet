@@ -26,7 +26,9 @@ lifecycleRuntimeKtx = "2.8.0"
 navigation = "2.7.7"
 navigationCompose = "1.2.0"
 jreleaser = "1.12.0"
-safenet= "0.0.3"
+safenet= "0.0.4"
+safenetNetwork = "0.0.10"
+vanniktech = "0.28.0"
 
 
 
@@ -42,7 +44,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 dagger = { group = "com.google.dagger", name = "dagger", version.ref = "hilt" }
 javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
 google-auto-service = { group = "com.google.auto.service", name = "auto-service", version.ref = "auto-service" }
@@ -71,7 +73,7 @@ androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragme
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 safenet-processor = { group = "com.thesubgraph.safenet", name = "processor", version.ref = "safenet" }
 safenet-annotations = { group = "com.thesubgraph.safenet", name = "annotations", version.ref = "safenet" }
-safenet-network = { group = "com.thesubgraph.safenet", name = "safenet", version.ref = "safenet" }
+safenet-network = { group = "com.thesubgraph.safenet", name = "safenet", version.ref = "safenetNetwork" }
 
 
 [plugins]
@@ -80,12 +82,7 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-jreleaser = { id = "org.jreleaser", version.ref = "jreleaser" }
-
-
-
-
-
+vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
 
 
 [bundles]
