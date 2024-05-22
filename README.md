@@ -132,7 +132,6 @@ class LoginRepositoryImpl @Inject constructor(
 
   override fun signUp(email: String, password: Int): Flow<ValueResult<List<Photo>>> {
         return flow {
-            sessionState.accessToken = AccessToken("Client-ID", token = "uxQ_VELbYVLsW95L9HsRfHYvScJ2pS0bjRH4FuW-5yo")
             val result = requestWrapper.execute {
                 apiService.signUp(email,password)
             }
